@@ -4,10 +4,13 @@ import java.time.LocalDate;
 
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -33,7 +36,11 @@ public class Postagem {
 	//Pega a data do sistema 
 	private LocalDate data;
 	
-	
+	//chave estrageira e trabalha com muitos p um
+	@ManyToOne //ignora a repetição de dados no retorno
+	@JsonIgnoreProperties("postagem")
+	private Tema tema;
+		
 	public Long getId() {
 		return id;
 	}
@@ -58,6 +65,14 @@ public class Postagem {
 	public void setData(LocalDate data) {
 		this.data = data;
 	}
+	public Tema getTema() {
+		return tema;
+	}
+	public void setTema(Tema tema) {
+		this.tema = tema;
+	}
+	
+	
 	
 	
 	
