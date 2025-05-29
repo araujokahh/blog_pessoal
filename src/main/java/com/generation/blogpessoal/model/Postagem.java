@@ -1,6 +1,6 @@
 package com.generation.blogpessoal.model;
 
-import java.time.LocalDate;
+import java.time.ZonedDateTime;
 
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -34,7 +34,7 @@ public class Postagem {
 	
 	@UpdateTimestamp
 	//Pega a data do sistema 
-	private LocalDate data;
+	private ZonedDateTime data;
 	
 	//chave estrageira e trabalha com muitos p um
 	@ManyToOne //ignora a repetição de dados no retorno
@@ -63,10 +63,10 @@ public class Postagem {
 	public void setTexto(String texto) {
 		this.texto = texto;
 	}
-	public LocalDate getData() {
+	public ZonedDateTime getData() {
 		return data;
 	}
-	public void setData(LocalDate data) {
+	public void setData(ZonedDateTime data) {
 		this.data = data;
 	}
 	public Tema getTema() {
